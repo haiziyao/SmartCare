@@ -7,7 +7,11 @@
 本项目不提供jar包。
 
 项目部署地址[SmartCare](http://8.152.100.169)
+
+
 项目接口文档[SmartCareApi](http://8.152.100.169:8080/doc.html)
+
+
 整个项目部署在一台`2G 2核`服务器上， 同时存在`jar` `redis` `mysql` `minio` `ngnix` `web-view`
 请大佬手下留情切勿进行高频访问，服务器属实扛不住 
 ### 环境配置
