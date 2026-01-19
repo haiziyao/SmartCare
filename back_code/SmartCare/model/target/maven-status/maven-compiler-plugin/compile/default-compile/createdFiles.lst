@@ -1,0 +1,16 @@
+com\hzy\entity\BaseEntity.class
+com\hzy\entity\WeekAvgParamInfo.class
+com\hzy\entity\RoomInfo.class
+com\hzy\entity\ParamInfo.class
+com\hzy\entity\UserInfo.class
+com\hzy\entity\YearAvgParamInfo.class
+com\hzy\entity\StaffInfo.class
+com\hzy\entity\PatientCaregiver.class
+com\hzy\entity\CaregiverInfo.class
+com\hzy\enums\BaseEnum.class
+com\hzy\entity\EquipmentInfo.class
+com\hzy\entity\EventInfo.class
+com\hzy\entity\DayAvgParamInfo.class
+com\hzy\entity\MonthAvgParamInfo.class
+com\hzy\entity\PatientInfo.class
+com\hzy\MybatisMetaObjectHandler.class

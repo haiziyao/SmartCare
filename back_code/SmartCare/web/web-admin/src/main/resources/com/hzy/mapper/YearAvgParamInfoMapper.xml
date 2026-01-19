@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzy.mapper.YearAvgParamInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.hzy.entity.YearAvgParamInfo">
+            <id property="id" column="id" />
+            <result property="patientId" column="patient_id" />
+            <result property="statYear" column="stat_year" />
+            <result property="hrAvg" column="hr_avg" />
+            <result property="hrDiffAvg" column="hr_diff_avg" />
+            <result property="rrAvg" column="rr_avg" />
+            <result property="rrDiffAvg" column="rr_diff_avg" />
+            <result property="ibiAvg" column="ibi_avg" />
+            <result property="hrvAvg" column="hrv_avg" />
+            <result property="respAmpAvg" column="resp_amp_avg" />
+            <result property="healthScoreAvg" column="health_score_avg" />
+            <result property="isDeleted" column="is_deleted" />
+            <result property="createTime" column="create_time" />
+            <result property="updateTime" column="update_time" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,patient_id,stat_year,hr_avg,hr_diff_avg,rr_avg,
+        rr_diff_avg,ibi_avg,hrv_avg,resp_amp_avg,health_score_avg,
+        is_deleted,create_time,update_time
+    </sql>
+    <insert id="CalData">
+        INSERT INTO year_avg_param_info (
+            patient_id,
+            stat_year,
+            hr_avg,
+            hr_diff_avg,
+            rr_avg,
+            rr_diff_avg,
+            ibi_avg,
+            hrv_avg,
+            resp_amp_avg,
+            health_score_avg
+        )
+        SELECT
+            patient_id,
+            YEAR(stat_date) as stat_year,
+            ROUND(AVG(hr_avg)) as hr_avg,
+            AVG(hr_diff_avg) as hr_diff_avg,
+            ROUND(AVG(rr_avg)) as rr_avg,
+            AVG(rr_diff_avg) as rr_diff_avg,
+            ROUND(AVG(ibi_avg)) as ibi_avg,
+            AVG(hrv_avg) as hrv_avg,
+            AVG(resp_amp_avg) as resp_amp_avg,
+            ROUND(AVG(health_score_avg)) as health_score_avg
+        FROM day_avg_param_info
+        /* 锁定与传入日期 同年 的所有日数据 */
+        WHERE YEAR(stat_date) = YEAR(#{targetDate})
+        GROUP BY patient_id, stat_year
+        ON DUPLICATE KEY UPDATE
+                             hr_avg = VALUES(hr_avg),
+                             hr_diff_avg = VALUES(hr_diff_avg),
+                             health_score_avg = VALUES(health_score_avg),
+                             update_time = NOW()
+    </insert>
+</mapper>

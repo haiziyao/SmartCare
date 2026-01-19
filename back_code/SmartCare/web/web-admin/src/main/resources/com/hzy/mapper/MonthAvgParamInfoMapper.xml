@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzy.mapper.MonthAvgParamInfoMapper">
+
+
+    <insert id="CalData">
+        INSERT INTO month_avg_param_info (
+            patient_id,
+            stat_year,
+            stat_month,
+            hr_avg,
+            hr_diff_avg,
+            rr_avg,
+            rr_diff_avg,
+            ibi_avg,
+            hrv_avg,
+            resp_amp_avg,
+            health_score_avg
+        )
+        SELECT
+            patient_id,
+            YEAR(stat_date) as stat_year,
+            MONTH(stat_date) as stat_month,
+            ROUND(AVG(hr_avg)) as hr_avg,
+            AVG(hr_diff_avg) as hr_diff_avg,
+            ROUND(AVG(rr_avg)) as rr_avg,
+            AVG(rr_diff_avg) as rr_diff_avg,
+            ROUND(AVG(ibi_avg)) as ibi_avg,
+            AVG(hrv_avg) as hrv_avg,
+            AVG(resp_amp_avg) as resp_amp_avg,
+            ROUND(AVG(health_score_avg)) as health_score_avg
+        FROM day_avg_param_info
+        /* 锁定与传入日期 同年同月 的所有日数据 */
+        WHERE YEAR(stat_date) = YEAR(#{targetDate})
+          AND MONTH(stat_date) = MONTH(#{targetDate})
+        GROUP BY patient_id, stat_year, stat_month
+        ON DUPLICATE KEY UPDATE
+                             hr_avg = VALUES(hr_avg),
+                             hr_diff_avg = VALUES(hr_diff_avg),
+                             rr_avg = VALUES(rr_avg),
+                             rr_diff_avg = VALUES(rr_diff_avg),
+                             ibi_avg = VALUES(ibi_avg),
+                             hrv_avg = VALUES(hrv_avg),
+                             resp_amp_avg = VALUES(resp_amp_avg),
+                             health_score_avg = VALUES(health_score_avg),
+                             update_time = NOW()
+    </insert>
+</mapper>

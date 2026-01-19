@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzy.mapper.ParamInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.hzy.entity.ParamInfo">
+            <id property="id" column="id" />
+            <result property="patientId" column="patient_id" />
+            <result property="equipmentId" column="equipment_id" />
+            <result property="windowStartTime" column="window_start_time" />
+            <result property="windowEndTime" column="window_end_time" />
+            <result property="hrAvg" column="hr_avg" />
+            <result property="hrMax" column="hr_max" />
+            <result property="hrMin" column="hr_min" />
+            <result property="hrDiff" column="hr_diff" />
+            <result property="rrAvg" column="rr_avg" />
+            <result property="rrMax" column="rr_max" />
+            <result property="rrMin" column="rr_min" />
+            <result property="rrDiff" column="rr_diff" />
+            <result property="ibiAvg" column="ibi_avg" />
+            <result property="hrvValue" column="hrv_value" />
+            <result property="respAmpAvg" column="resp_amp_avg" />
+            <result property="healthScore" column="health_score" />
+            <result property="qualityFlag" column="quality_flag" />
+            <result property="isDeleted" column="is_deleted" />
+            <result property="createTime" column="create_time" />
+            <result property="updateTime" column="update_time" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,patient_id,equipment_id,window_start_time,window_end_time,hr_avg,
+        hr_max,hr_min,hr_diff,rr_avg,rr_max,
+        rr_min,rr_diff,ibi_avg,hrv_value,resp_amp_avg,
+        health_score,quality_flag,is_deleted,create_time,update_time
+    </sql>
+</mapper>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzy.mapper.WeekAvgParamInfoMapper">
+
+
+
+    <insert id="CalData">
+        INSERT INTO week_avg_param_info (
+            patient_id,
+            stat_year,
+            stat_week,
+            hr_avg,
+            hr_diff_avg,
+            rr_avg,
+            rr_diff_avg,
+            ibi_avg,
+            hrv_avg,
+            resp_amp_avg,
+            health_score_avg
+        )
+        SELECT
+            patient_id,
+            /* 提取 ISO 年份 */
+            YEARWEEK(stat_date, 3) DIV 100 as stat_year,
+            /* 提取 ISO 周数 (1-53) */
+            YEARWEEK(stat_date, 3) % 100 as stat_week,
+            ROUND(AVG(hr_avg)) as hr_avg,
+            AVG(hr_diff_avg) as hr_diff_avg,
+            ROUND(AVG(rr_avg)) as rr_avg,
+            AVG(rr_diff_avg) as rr_diff_avg,
+            ROUND(AVG(ibi_avg)) as ibi_avg,
+            AVG(hrv_avg) as hrv_avg,
+            AVG(resp_amp_avg) as resp_amp_avg,
+            ROUND(AVG(health_score_avg)) as health_score_avg
+        FROM day_avg_param_info
+        /* 根据传入的日期，锁定该日期所属的那一周的所有天数进行聚合 */
+        WHERE YEARWEEK(stat_date, 3) = YEARWEEK(#{targetDate}, 3)
+        GROUP BY patient_id
+        ON DUPLICATE KEY UPDATE
+                             hr_avg = VALUES(hr_avg),
+                             hr_diff_avg = VALUES(hr_diff_avg),
+                             rr_avg = VALUES(rr_avg),
+                             rr_diff_avg = VALUES(rr_diff_avg),
+                             ibi_avg = VALUES(ibi_avg),
+                             hrv_avg = VALUES(hrv_avg),
+                             resp_amp_avg = VALUES(resp_amp_avg),
+                             health_score_avg = VALUES(health_score_avg),
+                             update_time = NOW()
+    </insert>
+</mapper>

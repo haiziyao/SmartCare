@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzy.mapper.CaregiverInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.hzy.entity.CaregiverInfo">
+            <id property="id" column="id" />
+            <result property="userId" column="user_id" />
+            <result property="name" column="name" />
+            <result property="gender" column="gender" />
+            <result property="birthDate" column="birth_date" />
+            <result property="idCard" column="id_card" />
+            <result property="phone" column="phone" />
+            <result property="email" column="email" />
+            <result property="address" column="address" />
+            <result property="notifyLevel" column="notify_level" />
+            <result property="remark" column="remark" />
+            <result property="isDeleted" column="is_deleted" />
+            <result property="createTime" column="create_time" />
+            <result property="updateTime" column="update_time" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,user_id,name,gender,birth_date,id_card,
+        phone,email,address,notify_level,remark,
+        is_deleted,create_time,update_time
+    </sql>
+</mapper>

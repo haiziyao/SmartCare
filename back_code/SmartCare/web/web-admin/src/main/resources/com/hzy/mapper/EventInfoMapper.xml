@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzy.mapper.EventInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.hzy.entity.EventInfo">
+            <id property="id" column="id" />
+            <result property="equipmentId" column="equipment_id" />
+            <result property="patientId" column="patient_id" />
+            <result property="occurTime" column="occur_time" />
+            <result property="reportTime" column="report_time" />
+            <result property="eventType" column="event_type" />
+            <result property="eventLevel" column="event_level" />
+            <result property="eventCode" column="event_code" />
+            <result property="heartRate" column="heart_rate" />
+            <result property="respRate" column="resp_rate" />
+            <result property="ibi" column="ibi" />
+            <result property="hrvValue" column="hrv_value" />
+            <result property="respAmplitude" column="resp_amplitude" />
+            <result property="healthScore" column="health_score" />
+            <result property="eventDetail" column="event_detail" />
+            <result property="rawPayload" column="raw_payload" />
+            <result property="handledStatus" column="handled_status" />
+            <result property="handlerStaffId" column="handler_staff_id" />
+            <result property="handledTime" column="handled_time" />
+            <result property="notifyStatus" column="notify_status" />
+            <result property="remark" column="remark" />
+            <result property="isDeleted" column="is_deleted" />
+            <result property="createTime" column="create_time" />
+            <result property="updateTime" column="update_time" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,equipment_id,patient_id,occur_time,report_time,event_type,
+        event_level,event_code,heart_rate,resp_rate,ibi,
+        hrv_value,resp_amplitude,health_score,event_detail,raw_payload,
+        handled_status,handler_staff_id,handled_time,notify_status,remark,
+        is_deleted,create_time,update_time
+    </sql>
+</mapper>

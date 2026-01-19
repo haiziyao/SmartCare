@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzy.mapper.DayAvgParamInfoMapper">
+
+
+    <insert id="CalData">
+        INSERT INTO day_avg_param_info (
+            patient_id,
+            stat_date,
+            hr_avg,
+            hr_diff_avg,
+            rr_avg,
+            rr_diff_avg,
+            ibi_avg,
+            hrv_avg,
+            resp_amp_avg,
+            health_score_avg
+        )
+        SELECT
+            patient_id,
+            DATE(window_start_time),
+            ROUND(AVG(hr_avg)),
+            AVG(hr_diff),
+            ROUND(AVG(rr_avg)),
+            AVG(rr_diff),
+            ROUND(AVG(ibi_avg)),
+            AVG(hrv_value),
+            AVG(resp_amp_avg),
+            ROUND(AVG(health_score))
+        FROM param_info
+        WHERE DATE(window_start_time) = #{targetDate}
+        GROUP BY patient_id
+        ON DUPLICATE KEY UPDATE
+                             hr_avg = VALUES(hr_avg),
+                             health_score_avg = VALUES(health_score_avg),
+                             update_time = NOW()
+        </insert>
+</mapper>

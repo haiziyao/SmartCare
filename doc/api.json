@@ -1,0 +1,2696 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "SmartCare",
+    "description": "后台管理系统API",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/user/saveOrUpdate": {
+      "post": {
+        "tags": [
+          "用户管理"
+        ],
+        "summary": "新增或修改用户信息",
+        "operationId": "saveOrUpdate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserInfo"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/room/saveOrUpdate": {
+      "post": {
+        "tags": [
+          "房间管理"
+        ],
+        "summary": "新增或修改房间信息",
+        "operationId": "saveOrUpdate_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomInfo"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/relation/saveOrUpdate": {
+      "post": {
+        "tags": [
+          "病人与监护人关系管理"
+        ],
+        "summary": "新增或修改关系",
+        "operationId": "saveOrUpdate_2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/patient/saveOrUpdate": {
+      "post": {
+        "tags": [
+          "病人管理"
+        ],
+        "summary": "新增或修改病人信息",
+        "operationId": "saveOrUpdate_3",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatientInfo"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/param": {
+      "post": {
+        "tags": [
+          "参数数据管理"
+        ],
+        "summary": "新增一条数据记录",
+        "operationId": "save",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParamInfo"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultParamInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/event/save": {
+      "post": {
+        "tags": [
+          "事件管理"
+        ],
+        "summary": "新增报警信息",
+        "operationId": "save_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventInfo"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/caregiver/saveOrUpdate": {
+      "post": {
+        "tags": [
+          "监护人管理"
+        ],
+        "summary": "新增或修改监护人信息",
+        "operationId": "saveOrUpdate_4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CaregiverInfo"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/{id}": {
+      "get": {
+        "tags": [
+          "用户管理"
+        ],
+        "summary": "根据用户id查询用户信息",
+        "operationId": "getById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultUserInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/page": {
+      "get": {
+        "tags": [
+          "用户管理"
+        ],
+        "summary": "分页匹配查询用户信息",
+        "operationId": "getPage",
+        "parameters": [
+          {
+            "name": "current",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "用户ID",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "用户ID"
+            }
+          },
+          {
+            "name": "username",
+            "in": "query",
+            "description": "登录用户名",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "登录用户名"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultPageUserInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/room/{id}": {
+      "get": {
+        "tags": [
+          "房间管理"
+        ],
+        "summary": "根据房间id查询房间信息",
+        "operationId": "getById_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultRoomInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/room/page": {
+      "get": {
+        "tags": [
+          "房间管理"
+        ],
+        "summary": "分页查询房间信息",
+        "operationId": "getPage_1",
+        "parameters": [
+          {
+            "name": "current",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultPageRoomInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/relation/patient/{id}": {
+      "get": {
+        "tags": [
+          "病人与监护人关系管理"
+        ],
+        "summary": "根据病人id查询监护人信息",
+        "operationId": "listCaregiverByPatientId",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/patient/{id}": {
+      "get": {
+        "tags": [
+          "病人管理"
+        ],
+        "summary": "根据病人id查询病人信息",
+        "operationId": "getById_2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultPatientInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/patient/page": {
+      "get": {
+        "tags": [
+          "病人管理"
+        ],
+        "summary": "分页查询病人信息",
+        "operationId": "getPage_2",
+        "parameters": [
+          {
+            "name": "current",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultPagePatientInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/param/year/page": {
+      "get": {
+        "tags": [
+          "参数数据管理"
+        ],
+        "summary": "分页查询YearAvgParam",
+        "operationId": "pageYear",
+        "parameters": [
+          {
+            "name": "current",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultPageYearAvgParamInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/param/week/page": {
+      "get": {
+        "tags": [
+          "参数数据管理"
+        ],
+        "summary": "分页查询WeekAvgParam",
+        "operationId": "pageWeek",
+        "parameters": [
+          {
+            "name": "current",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultPageWeekAvgParamInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/param/page": {
+      "get": {
+        "tags": [
+          "参数数据管理"
+        ],
+        "summary": "分页查询param记录",
+        "operationId": "page",
+        "parameters": [
+          {
+            "name": "current",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "patientId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultPageParamInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/param/month/page": {
+      "get": {
+        "tags": [
+          "参数数据管理"
+        ],
+        "summary": "分页查询MonthAvgParam",
+        "operationId": "pageMonth",
+        "parameters": [
+          {
+            "name": "current",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultPageMonthAvgParamInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/param/day/page": {
+      "get": {
+        "tags": [
+          "参数数据管理"
+        ],
+        "summary": "分页查询DayAvgParam",
+        "operationId": "pageDay",
+        "parameters": [
+          {
+            "name": "current",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultPageDayAvgParamInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/param/data/year": {
+      "get": {
+        "tags": [
+          "参数数据管理"
+        ],
+        "summary": "手动进行执行year数据总结 ",
+        "operationId": "CalYear",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "description": "统计日期，格式：YYYY-MM-DD",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "2026-01-14"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/param/data/week": {
+      "get": {
+        "tags": [
+          "参数数据管理"
+        ],
+        "summary": "手动进行执行week数据总结 ",
+        "operationId": "CalWeek",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "description": "统计日期，格式：YYYY-MM-DD",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "2026-01-14"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/param/data/month": {
+      "get": {
+        "tags": [
+          "参数数据管理"
+        ],
+        "summary": "手动进行执行month数据总结 ",
+        "operationId": "CalMonth",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "description": "统计日期，格式：YYYY-MM-DD",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "2026-01-14"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/param/data/day": {
+      "get": {
+        "tags": [
+          "参数数据管理"
+        ],
+        "summary": "手动进行执行day数据总结 ",
+        "operationId": "CalDay",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "description": "统计日期，格式：YYYY-MM-DD",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "2026-01-14"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/event/{id}": {
+      "get": {
+        "tags": [
+          "事件管理"
+        ],
+        "summary": "根据病人id查询事件",
+        "operationId": "listByPatientId",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultEventInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/event/page": {
+      "get": {
+        "tags": [
+          "事件管理"
+        ],
+        "summary": "分页查询事件信息",
+        "operationId": "page_1",
+        "parameters": [
+          {
+            "name": "current",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultPageEventInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/caregiver/{id}": {
+      "get": {
+        "tags": [
+          "监护人管理"
+        ],
+        "summary": "根据监护人id查询监护人信息",
+        "operationId": "getById_3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultCaregiverInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/caregiver/page": {
+      "get": {
+        "tags": [
+          "监护人管理"
+        ],
+        "summary": "分页查询病人信息",
+        "operationId": "getPage_3",
+        "parameters": [
+          {
+            "name": "current",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultPageCaregiverInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/removeById": {
+      "delete": {
+        "tags": [
+          "用户管理"
+        ],
+        "summary": "根据用户id删除用户",
+        "operationId": "removeById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/room/removeById": {
+      "delete": {
+        "tags": [
+          "房间管理"
+        ],
+        "summary": "根据房间id删除房间信息",
+        "operationId": "removeById_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/relation/remove": {
+      "delete": {
+        "tags": [
+          "病人与监护人关系管理"
+        ],
+        "summary": "删除关系",
+        "operationId": "remove",
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "caregiverId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResultObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/patient/removeById": {
+      "delete": {
+        "tags": [
+          "病人管理"
+        ],
+        "summary": "根据病人id删除病人信息",
+        "operationId": "removeById_2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/caregiver/removeById": {
+      "delete": {
+        "tags": [
+          "监护人管理"
+        ],
+        "summary": "根据监护人id删除监护人",
+        "operationId": "removeById_3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "主键",
+            "format": "int64"
+          },
+          "username": {
+            "type": "string",
+            "description": "登录用户名"
+          },
+          "passwordHash": {
+            "type": "string",
+            "description": "登录密码哈希值"
+          },
+          "userType": {
+            "type": "integer",
+            "description": "用户类型：1-患者 2-家属 3-护工 4-医护人员 9-系统管理员",
+            "format": "int32"
+          },
+          "patientId": {
+            "type": "integer",
+            "description": "默认关联的病人ID",
+            "format": "int64"
+          },
+          "phone": {
+            "type": "string",
+            "description": "手机号"
+          },
+          "email": {
+            "type": "string",
+            "description": "邮箱"
+          },
+          "status": {
+            "type": "integer",
+            "description": "账号状态：1-正常 2-禁用 3-冻结",
+            "format": "int32"
+          },
+          "lastLoginTime": {
+            "type": "string",
+            "description": "最近一次登录时间",
+            "format": "date-time"
+          },
+          "lastLoginIp": {
+            "type": "string",
+            "description": "最近一次登录IP"
+          }
+        },
+        "description": "系统用户账号"
+      },
+      "Result": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object"
+          }
+        }
+      },
+      "RoomInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "主键",
+            "format": "int64"
+          },
+          "roomCode": {
+            "type": "string",
+            "description": "房间编号"
+          },
+          "roomName": {
+            "type": "string",
+            "description": "房间名称"
+          },
+          "roomType": {
+            "type": "integer",
+            "description": "房间类型",
+            "format": "int32"
+          },
+          "maxSize": {
+            "type": "integer",
+            "description": "最大容纳数",
+            "format": "int32"
+          },
+          "usedSize": {
+            "type": "integer",
+            "description": "当前占用数",
+            "format": "int32"
+          },
+          "roomStatus": {
+            "type": "integer",
+            "description": "房间状态",
+            "format": "int32"
+          },
+          "remark": {
+            "type": "string",
+            "description": "备注信息"
+          }
+        },
+        "description": "房间信息"
+      },
+      "ResultObject": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object"
+          }
+        }
+      },
+      "PatientInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "病人ID",
+            "format": "int64"
+          },
+          "patientName": {
+            "type": "string",
+            "description": "病人姓名"
+          },
+          "gender": {
+            "type": "integer",
+            "description": "性别",
+            "format": "int32"
+          },
+          "birthDate": {
+            "type": "string",
+            "description": "出生日期",
+            "format": "date-time"
+          },
+          "idCard": {
+            "type": "string",
+            "description": "身份证号"
+          },
+          "phone": {
+            "type": "string",
+            "description": "本人联系电话"
+          },
+          "emergencyContactPhone": {
+            "type": "string",
+            "description": "紧急联系人电话"
+          },
+          "homeAddress": {
+            "type": "string",
+            "description": "家庭住址"
+          },
+          "roomId": {
+            "type": "integer",
+            "description": "所在房间ID",
+            "format": "int64"
+          },
+          "equipmentId": {
+            "type": "integer",
+            "description": "绑定设备ID",
+            "format": "int64"
+          },
+          "staffId": {
+            "type": "integer",
+            "description": "默认工作人员ID",
+            "format": "int64"
+          },
+          "equipmentStatus": {
+            "type": "integer",
+            "description": "设备监测状态",
+            "format": "int32"
+          },
+          "patientStatus": {
+            "type": "integer",
+            "description": "病人健康状态",
+            "format": "int32"
+          },
+          "eventGrade": {
+            "type": "integer",
+            "description": "风险等级",
+            "format": "int32"
+          },
+          "remark": {
+            "type": "string",
+            "description": "备注信息"
+          }
+        },
+        "description": "病人基础信息"
+      },
+      "ParamInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "主键",
+            "format": "int64"
+          },
+          "patientId": {
+            "type": "integer",
+            "description": "病人ID",
+            "format": "int64"
+          },
+          "equipmentId": {
+            "type": "integer",
+            "description": "设备ID",
+            "format": "int64"
+          },
+          "windowStartTime": {
+            "type": "string",
+            "description": "统计窗口开始时间",
+            "format": "date-time"
+          },
+          "windowEndTime": {
+            "type": "string",
+            "description": "统计窗口结束时间",
+            "format": "date-time"
+          },
+          "hrAvg": {
+            "type": "integer",
+            "description": "心率平均值",
+            "format": "int32"
+          },
+          "hrMax": {
+            "type": "integer",
+            "description": "心率最大值",
+            "format": "int32"
+          },
+          "hrMin": {
+            "type": "integer",
+            "description": "心率最小值",
+            "format": "int32"
+          },
+          "hrDiff": {
+            "type": "number",
+            "description": "心率百分偏差"
+          },
+          "rrAvg": {
+            "type": "integer",
+            "description": "呼吸率平均值",
+            "format": "int32"
+          },
+          "rrMax": {
+            "type": "integer",
+            "description": "呼吸率最大值",
+            "format": "int32"
+          },
+          "rrMin": {
+            "type": "integer",
+            "description": "呼吸率最小值",
+            "format": "int32"
+          },
+          "rrDiff": {
+            "type": "number",
+            "description": "呼吸率百分偏差"
+          },
+          "ibiAvg": {
+            "type": "integer",
+            "description": "心跳间期平均值",
+            "format": "int32"
+          },
+          "hrvValue": {
+            "type": "number",
+            "description": "心率变异性指标"
+          },
+          "respAmpAvg": {
+            "type": "number",
+            "description": "呼吸幅值平均值"
+          },
+          "healthScore": {
+            "type": "integer",
+            "description": "健康评分",
+            "format": "int32"
+          },
+          "qualityFlag": {
+            "type": "integer",
+            "description": "数据质量标记",
+            "format": "int32"
+          }
+        },
+        "description": "生理参数原始统计结果"
+      },
+      "ResultParamInfo": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/ParamInfo"
+          }
+        }
+      },
+      "EventInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "主键",
+            "format": "int64"
+          },
+          "equipmentId": {
+            "type": "integer",
+            "description": "设备ID",
+            "format": "int64"
+          },
+          "patientId": {
+            "type": "integer",
+            "description": "病人ID",
+            "format": "int64"
+          },
+          "occurTime": {
+            "type": "string",
+            "description": "事件发生时间",
+            "format": "date-time"
+          },
+          "reportTime": {
+            "type": "string",
+            "description": "事件上报时间",
+            "format": "date-time"
+          },
+          "eventType": {
+            "type": "integer",
+            "description": "事件类型：1-心率异常 2-呼吸异常 3-离床等",
+            "format": "int32"
+          },
+          "eventLevel": {
+            "type": "integer",
+            "description": "严重等级：1-轻度 2-中度 3-重度 4-危急",
+            "format": "int32"
+          },
+          "eventCode": {
+            "type": "string",
+            "description": "设备事件编码"
+          },
+          "heartRate": {
+            "type": "integer",
+            "description": "事件发生时心率",
+            "format": "int32"
+          },
+          "respRate": {
+            "type": "integer",
+            "description": "事件发生时呼吸率",
+            "format": "int32"
+          },
+          "ibi": {
+            "type": "integer",
+            "description": "事件发生时心跳间期",
+            "format": "int32"
+          },
+          "hrvValue": {
+            "type": "number",
+            "description": "事件发生时心率变异性指标"
+          },
+          "respAmplitude": {
+            "type": "number",
+            "description": "事件发生时呼吸幅值"
+          },
+          "healthScore": {
+            "type": "integer",
+            "description": "事件发生时健康评分",
+            "format": "int32"
+          },
+          "eventDetail": {
+            "type": "string",
+            "description": "事件详细描述"
+          },
+          "rawPayload": {
+            "type": "string",
+            "description": "原始扩展数据"
+          },
+          "handledStatus": {
+            "type": "integer",
+            "description": "处理状态：0-未处理 1-已确认 2-已处理 3-已忽略",
+            "format": "int32"
+          },
+          "handlerStaffId": {
+            "type": "integer",
+            "description": "处理人ID",
+            "format": "int64"
+          },
+          "handledTime": {
+            "type": "string",
+            "description": "处理时间",
+            "format": "date-time"
+          },
+          "notifyStatus": {
+            "type": "integer",
+            "description": "通知状态：0-未通知 1-已通知",
+            "format": "int32"
+          },
+          "remark": {
+            "type": "string",
+            "description": "备注信息"
+          }
+        },
+        "description": "设备上报异常事件"
+      },
+      "CaregiverInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "主键",
+            "format": "int64"
+          },
+          "userId": {
+            "type": "integer",
+            "description": "关联的系统用户ID，可为空（无账号的监护人）",
+            "format": "int64"
+          },
+          "caregiverName": {
+            "type": "string",
+            "description": "监护人姓名"
+          },
+          "gender": {
+            "type": "integer",
+            "description": "性别：1-男 2-女 0-未知",
+            "format": "int32"
+          },
+          "birthDate": {
+            "type": "string",
+            "description": "出生日期",
+            "format": "date-time"
+          },
+          "idCard": {
+            "type": "string",
+            "description": "身份证号"
+          },
+          "relationship": {
+            "type": "integer",
+            "description": "与病人关系：1-父母 2-子女 3-配偶 4-亲属 5-其他",
+            "format": "int32"
+          },
+          "phone": {
+            "type": "string",
+            "description": "监护人联系电话，用于事件通知"
+          },
+          "email": {
+            "type": "string",
+            "description": "监护人邮箱"
+          },
+          "homeAddress": {
+            "type": "string",
+            "description": "家庭住址"
+          },
+          "notifyLevel": {
+            "type": "integer",
+            "description": "事件通知等级阈值：1-全部通知 2-仅中高风险 3-仅高风险",
+            "format": "int32"
+          },
+          "remark": {
+            "type": "string",
+            "description": "备注信息"
+          }
+        },
+        "description": "病人监护人信息"
+      },
+      "ResultUserInfo": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/UserInfo"
+          }
+        }
+      },
+      "OrderItem": {
+        "type": "object",
+        "properties": {
+          "column": {
+            "type": "string"
+          },
+          "asc": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PageUserInfo": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserInfo"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orders": {
+            "type": "array",
+            "deprecated": true,
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            }
+          },
+          "optimizeCountSql": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "searchCount": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "optimizeJoinOfCountSql": {
+            "type": "boolean",
+            "writeOnly": true
+          },
+          "maxLimit": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          },
+          "countId": {
+            "type": "string",
+            "deprecated": true
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "ResultPageUserInfo": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageUserInfo"
+          }
+        }
+      },
+      "ResultRoomInfo": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/RoomInfo"
+          }
+        }
+      },
+      "PageRoomInfo": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoomInfo"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orders": {
+            "type": "array",
+            "deprecated": true,
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            }
+          },
+          "optimizeCountSql": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "searchCount": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "optimizeJoinOfCountSql": {
+            "type": "boolean",
+            "writeOnly": true
+          },
+          "maxLimit": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          },
+          "countId": {
+            "type": "string",
+            "deprecated": true
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "ResultPageRoomInfo": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageRoomInfo"
+          }
+        }
+      },
+      "ResultPatientInfo": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PatientInfo"
+          }
+        }
+      },
+      "PagePatientInfo": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PatientInfo"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orders": {
+            "type": "array",
+            "deprecated": true,
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            }
+          },
+          "optimizeCountSql": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "searchCount": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "optimizeJoinOfCountSql": {
+            "type": "boolean",
+            "writeOnly": true
+          },
+          "maxLimit": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          },
+          "countId": {
+            "type": "string",
+            "deprecated": true
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "ResultPagePatientInfo": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PagePatientInfo"
+          }
+        }
+      },
+      "PageYearAvgParamInfo": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/YearAvgParamInfo"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orders": {
+            "type": "array",
+            "deprecated": true,
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            }
+          },
+          "optimizeCountSql": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "searchCount": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "optimizeJoinOfCountSql": {
+            "type": "boolean",
+            "writeOnly": true
+          },
+          "maxLimit": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          },
+          "countId": {
+            "type": "string",
+            "deprecated": true
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "ResultPageYearAvgParamInfo": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageYearAvgParamInfo"
+          }
+        }
+      },
+      "YearAvgParamInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "主键",
+            "format": "int64"
+          },
+          "patientId": {
+            "type": "integer",
+            "description": "病人ID",
+            "format": "int64"
+          },
+          "statYear": {
+            "type": "integer",
+            "description": "统计年份",
+            "format": "int32"
+          },
+          "hrAvg": {
+            "type": "integer",
+            "description": "当年心率平均值（bpm）",
+            "format": "int32"
+          },
+          "hrDiffAvg": {
+            "type": "number",
+            "description": "当年心率平均偏差（%）"
+          },
+          "rrAvg": {
+            "type": "integer",
+            "description": "当年呼吸率平均值",
+            "format": "int32"
+          },
+          "rrDiffAvg": {
+            "type": "number",
+            "description": "当年呼吸率平均偏差（%）"
+          },
+          "ibiAvg": {
+            "type": "integer",
+            "description": "当年心跳间期平均值",
+            "format": "int32"
+          },
+          "hrvAvg": {
+            "type": "number",
+            "description": "当年HRV平均值"
+          },
+          "respAmpAvg": {
+            "type": "number",
+            "description": "当年呼吸幅值平均值"
+          },
+          "healthScoreAvg": {
+            "type": "integer",
+            "description": "当年健康评分平均值",
+            "format": "int32"
+          }
+        },
+        "description": "病人生理参数年均统计"
+      },
+      "PageWeekAvgParamInfo": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WeekAvgParamInfo"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orders": {
+            "type": "array",
+            "deprecated": true,
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            }
+          },
+          "optimizeCountSql": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "searchCount": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "optimizeJoinOfCountSql": {
+            "type": "boolean",
+            "writeOnly": true
+          },
+          "maxLimit": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          },
+          "countId": {
+            "type": "string",
+            "deprecated": true
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "ResultPageWeekAvgParamInfo": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageWeekAvgParamInfo"
+          }
+        }
+      },
+      "WeekAvgParamInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "主键",
+            "format": "int64"
+          },
+          "patientId": {
+            "type": "integer",
+            "description": "病人ID",
+            "format": "int64"
+          },
+          "statYear": {
+            "type": "integer",
+            "description": "统计年份",
+            "format": "int32"
+          },
+          "statWeek": {
+            "type": "integer",
+            "description": "统计周（ISO周，1-53）",
+            "format": "int32"
+          },
+          "hrAvg": {
+            "type": "integer",
+            "description": "当周心率平均值（bpm）",
+            "format": "int32"
+          },
+          "hrDiffAvg": {
+            "type": "number",
+            "description": "当周心率平均偏差（%）"
+          },
+          "rrAvg": {
+            "type": "integer",
+            "description": "当周呼吸率平均值",
+            "format": "int32"
+          },
+          "rrDiffAvg": {
+            "type": "number",
+            "description": "当周呼吸率平均偏差（%）"
+          },
+          "ibiAvg": {
+            "type": "integer",
+            "description": "当周心跳间期平均值",
+            "format": "int32"
+          },
+          "hrvAvg": {
+            "type": "number",
+            "description": "当周HRV平均值"
+          },
+          "respAmpAvg": {
+            "type": "number",
+            "description": "当周呼吸幅值平均值"
+          },
+          "healthScoreAvg": {
+            "type": "integer",
+            "description": "当周健康评分平均值",
+            "format": "int32"
+          }
+        },
+        "description": "病人生理参数周均统计"
+      },
+      "PageParamInfo": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParamInfo"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orders": {
+            "type": "array",
+            "deprecated": true,
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            }
+          },
+          "optimizeCountSql": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "searchCount": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "optimizeJoinOfCountSql": {
+            "type": "boolean",
+            "writeOnly": true
+          },
+          "maxLimit": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          },
+          "countId": {
+            "type": "string",
+            "deprecated": true
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "ResultPageParamInfo": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageParamInfo"
+          }
+        }
+      },
+      "MonthAvgParamInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "主键",
+            "format": "int64"
+          },
+          "patientId": {
+            "type": "integer",
+            "description": "病人ID",
+            "format": "int64"
+          },
+          "statYear": {
+            "type": "integer",
+            "description": "统计年份",
+            "format": "int32"
+          },
+          "statMonth": {
+            "type": "integer",
+            "description": "统计月份",
+            "format": "int32"
+          },
+          "hrAvg": {
+            "type": "integer",
+            "description": "当月心率平均值",
+            "format": "int32"
+          },
+          "hrDiffAvg": {
+            "type": "number",
+            "description": "当月心率平均偏差"
+          },
+          "rrAvg": {
+            "type": "integer",
+            "description": "当月呼吸率平均值",
+            "format": "int32"
+          },
+          "rrDiffAvg": {
+            "type": "number",
+            "description": "当月呼吸率平均偏差"
+          },
+          "ibiAvg": {
+            "type": "integer",
+            "description": "当月心跳间期平均值",
+            "format": "int32"
+          },
+          "hrvAvg": {
+            "type": "number",
+            "description": "当月HRV平均值"
+          },
+          "respAmpAvg": {
+            "type": "number",
+            "description": "当月呼吸幅值平均值"
+          },
+          "healthScoreAvg": {
+            "type": "integer",
+            "description": "当月健康评分平均值",
+            "format": "int32"
+          }
+        },
+        "description": "病人生理参数月均统计"
+      },
+      "PageMonthAvgParamInfo": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MonthAvgParamInfo"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orders": {
+            "type": "array",
+            "deprecated": true,
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            }
+          },
+          "optimizeCountSql": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "searchCount": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "optimizeJoinOfCountSql": {
+            "type": "boolean",
+            "writeOnly": true
+          },
+          "maxLimit": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          },
+          "countId": {
+            "type": "string",
+            "deprecated": true
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "ResultPageMonthAvgParamInfo": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageMonthAvgParamInfo"
+          }
+        }
+      },
+      "DayAvgParamInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "主键",
+            "format": "int64"
+          },
+          "patientId": {
+            "type": "integer",
+            "description": "病人ID",
+            "format": "int64"
+          },
+          "statDate": {
+            "type": "string",
+            "description": "统计日期（YYYY-MM-DD）",
+            "format": "date-time"
+          },
+          "hrAvg": {
+            "type": "integer",
+            "description": "当日心率平均值（bpm）",
+            "format": "int32"
+          },
+          "hrDiffAvg": {
+            "type": "number",
+            "description": "当日心率平均偏差（%）"
+          },
+          "rrAvg": {
+            "type": "integer",
+            "description": "当日呼吸率平均值（次/分）",
+            "format": "int32"
+          },
+          "rrDiffAvg": {
+            "type": "number",
+            "description": "当日呼吸率平均偏差（%）"
+          },
+          "ibiAvg": {
+            "type": "integer",
+            "description": "当日心跳间期平均值（ms）",
+            "format": "int32"
+          },
+          "hrvAvg": {
+            "type": "number",
+            "description": "当日HRV平均值"
+          },
+          "respAmpAvg": {
+            "type": "number",
+            "description": "当日呼吸幅值平均值"
+          },
+          "healthScoreAvg": {
+            "type": "integer",
+            "description": "当日健康评分平均值（0-100）",
+            "format": "int32"
+          }
+        },
+        "description": "病人生理参数日均统计"
+      },
+      "PageDayAvgParamInfo": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DayAvgParamInfo"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orders": {
+            "type": "array",
+            "deprecated": true,
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            }
+          },
+          "optimizeCountSql": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "searchCount": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "optimizeJoinOfCountSql": {
+            "type": "boolean",
+            "writeOnly": true
+          },
+          "maxLimit": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          },
+          "countId": {
+            "type": "string",
+            "deprecated": true
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "ResultPageDayAvgParamInfo": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageDayAvgParamInfo"
+          }
+        }
+      },
+      "ResultEventInfo": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/EventInfo"
+          }
+        }
+      },
+      "PageEventInfo": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EventInfo"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orders": {
+            "type": "array",
+            "deprecated": true,
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            }
+          },
+          "optimizeCountSql": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "searchCount": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "optimizeJoinOfCountSql": {
+            "type": "boolean",
+            "writeOnly": true
+          },
+          "maxLimit": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          },
+          "countId": {
+            "type": "string",
+            "deprecated": true
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "ResultPageEventInfo": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageEventInfo"
+          }
+        }
+      },
+      "ResultCaregiverInfo": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/CaregiverInfo"
+          }
+        }
+      },
+      "PageCaregiverInfo": {
+        "type": "object",
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CaregiverInfo"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "current": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "orders": {
+            "type": "array",
+            "deprecated": true,
+            "items": {
+              "$ref": "#/components/schemas/OrderItem"
+            }
+          },
+          "optimizeCountSql": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "searchCount": {
+            "type": "boolean",
+            "deprecated": true
+          },
+          "optimizeJoinOfCountSql": {
+            "type": "boolean",
+            "writeOnly": true
+          },
+          "maxLimit": {
+            "type": "integer",
+            "format": "int64",
+            "deprecated": true
+          },
+          "countId": {
+            "type": "string",
+            "deprecated": true
+          },
+          "pages": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "ResultPageCaregiverInfo": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/PageCaregiverInfo"
+          }
+        }
+      }
+    }
+  }
+}
